@@ -9,6 +9,7 @@
 @include('sweet::alert')
 
 
+
 <section class="section_content">
     @yield('content')
 </section>

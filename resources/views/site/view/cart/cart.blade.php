@@ -37,8 +37,9 @@
                                 </td>
                                 <td>{{$product['item']['title']}}</td>
                                 <td> {{$product['item']['price']}} تومان</td>
-                                <td><input type="number" class=" input_count_buy" name="" id="" min="1"
-                                           value="{{$product['qty']}}"></td>
+                                <td><label for=""></label><input type="number" class=" input_count_buy" name="" id=""
+                                                                 min="1"
+                                                                 value="{{$product['qty']}}"></td>
                                 <td> {{$product['item']['price'] * $product['qty']}} تومان</td>
                                 <td>
                                     <button class=" btn_delete_basket" type="button">
@@ -61,11 +62,11 @@
 
                         <div class="col-xs-4 col-sm-6 col-md-5 col-lg-4 ">
                             {{--<div class="input-group style_input_text">--}}
-                                {{--<input type="text" class="form-control" placeholder="کد تخفیف خود را اینجا وارد نمایید"--}}
-                                       {{--aria-label="Recipient's username" aria-describedby="basic-addon2">--}}
-                                {{--<div class="input-group-append">--}}
-                                    {{--<button class="btn input-group-text" type="button" id="basic-addon2">ثبت</button>--}}
-                                {{--</div>--}}
+                            {{--<input type="text" class="form-control" placeholder="کد تخفیف خود را اینجا وارد نمایید"--}}
+                            {{--aria-label="Recipient's username" aria-describedby="basic-addon2">--}}
+                            {{--<div class="input-group-append">--}}
+                            {{--<button class="btn input-group-text" type="button" id="basic-addon2">ثبت</button>--}}
+                            {{--</div>--}}
                             {{--</div>--}}
 
 
@@ -74,12 +75,15 @@
                                 {{ csrf_field() }}
                                 <div class="form-row">
                                     <div class="col-12 col-sm-9 col-md-7 col-lg-5 col-xl-4">
-                                        <input type="text" class="form-control" placeholder="کد تخفیف خود را اینجا وارد نمایید"
-                                          name="code"     aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control"
+                                               placeholder="کد تخفیف خود را اینجا وارد نمایید"
+                                               name="code" aria-label="Recipient's username"
+                                               aria-describedby="basic-addon2">
                                     </div>
                                     <div class="col">
                                         <div class="input-group-append">
-                                            <button class="btn input-group-text" type="button" id="basic-addon2">ثبت</button>
+                                            <button class="btn input-group-text" type="button" id="basic-addon2">ثبت
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="col">
