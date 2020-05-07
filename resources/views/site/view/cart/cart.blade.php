@@ -68,6 +68,7 @@
                                 {{--</div>--}}
                             {{--</div>--}}
 
+
                             <form class="form-horizontal discount" id="form_discount" action="{{route('discount')}}"
                                   method="post">
                                 {{ csrf_field() }}
