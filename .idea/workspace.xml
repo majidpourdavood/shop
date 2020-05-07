@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6277e129-6f32-4799-9239-1131ec3c6132" name="Default Changelist" comment="commit t">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/site/view/cart/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/view/cart/cart.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="6277e129-6f32-4799-9239-1131ec3c6132" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +343,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/project_test_laravel/taninnew" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yarpay" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -418,7 +414,7 @@
       <workItem from="1588692604314" duration="5324000" />
       <workItem from="1588828275375" duration="84000" />
       <workItem from="1588837300729" duration="626000" />
-      <workItem from="1588844048235" duration="6696000" />
+      <workItem from="1588844048235" duration="7329000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1588848657774</created>
@@ -434,11 +430,18 @@
       <option name="project" value="LOCAL" />
       <updated>1588850105352</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="commit t">
+      <created>1588855343880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588855343880</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249627000" />
+    <option name="totallyTimeSpent" value="250260000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
