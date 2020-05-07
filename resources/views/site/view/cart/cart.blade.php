@@ -50,6 +50,7 @@
                                            href="{{route('deleteItemCart', ['id' => $product['item']['id']])}}">
                                             <i class="fas fa-times"></i>
 
+
                                         </a>
                                     </button>
                                 </td>
