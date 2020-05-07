@@ -1,0 +1,84 @@
+.style-top-brand{
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+
+.form-control {
+    height: auto !important;
+}
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn_submit_tender {
+    color: #fff;
+    background-color: #4846b1;
+    border: 2px dashed #4846b1;
+}
+
+.upload-btn-wrapper .btn {
+    border: 2px dashed #4846b1;
+    color: #4846b1;
+    background-color: white;
+    padding: 1rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 6rem;
+    width: 7.1rem;
+    margin: .3rem;
+
+}
+
+.span_btn_upload {
+    width: 100%;
+    display: block;
+    font-size: .8rem;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}.upload-btn-wrapper .btn {
+     height: 6.7rem;
+     width: 7.7rem;
+ }.upload-btn-wrapper input[type=file] {
+      display: none;
+  }
+
+.upload-btn-wrapper img {
+    height: 6.7rem;
+    width: 7.7rem;
+    border: 2px dashed #4846b1;
+    /* color: #4846b1; */
+    /* background-color: white; */
+    /* padding: 1rem 1rem; */
+    border-radius: 8px;
+    /* font-size: 1rem; */
+    /* font-weight: bold; */
+    /* height: 6rem; */
+    /* width: 7.1rem; */
+    margin: .3rem;
+}
+
+.icon_trash_image {
+    position: absolute;
+    right: .8rem;
+    top: 1rem;
+    /* transform: translate(0,-50%); */
+    color: #ff3c1b;
+    font-size: 1.12rem;
+    cursor: pointer;
+}
+
+.carousel-item .img-fluid {
+    height: 31rem;
+    width: 100%;
+}
