@@ -44,6 +44,7 @@
                                 <td>
                                     <button class=" btn_delete_basket" type="button">
 
+
                                         <a class="child_item center_horizontal_vertical delete_cart"
                                            title="حذف از سبد خرید"
                                            onclick="return confirm('آیا میخواهید این محصول رو از سبد خرید خود حذف کنید ؟')"

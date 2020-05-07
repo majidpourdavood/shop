@@ -38,6 +38,8 @@ Route::group(['namespace' => 'View'], function () {
 
 Route::group(['prefix' => ''], function () {
 
+
+
     Route::get('/cart', 'CartController@cart')->name('cart');
     Route::get('/cart/addcart/{slug}', 'CartController@addCart')->name('addCart');
 //    Route::post('/cart/updateCart/{slug_product}', 'CartController@updateCart')->name('updateCart');
