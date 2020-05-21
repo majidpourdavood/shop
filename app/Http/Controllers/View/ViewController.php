@@ -15,6 +15,7 @@ use App\Notifications\NotificationSendAll;
 use App\User;
 use Illuminate\Http\Request;
 use Mail;
+use Symfony\Component\Console\Input\Input;
 
 class ViewController extends Controller
 {
@@ -49,6 +50,7 @@ class ViewController extends Controller
 
     public function index()
     {
+//        return \request()->session()->all();
 //        Mail::raw('Sending emails with Mailgun and Laravel ', function($message)
 //        {
 //            $message->subject('Mailgun and Laravel ');
@@ -64,19 +66,41 @@ class ViewController extends Controller
         $sliders = Banner::where('active', 1)->where('position', 0)->orderBy('created_at', 'desc')->limit(9)->get();
         $productDiscounts = Banner::where('active', 1)->where('position', 1)->orderBy('created_at', 'desc')->limit(3)->get();
         $brands = Brand::where('status', 1)->orderBy('created_at', 'desc')->limit(9)->get();
-        return view('site.view.index', compact(['productNews', 'sliders', 'productViewCounts', 'productDiscounts' ,'brands']));
+        return view('site.view.index', compact(['productNews', 'sliders', 'productViewCounts', 'productDiscounts', 'brands']));
     }
 
 
     public function product($slug)
     {
         $product = Product::where('slug', $slug)->where('active', 1)->first();
-        $product->increment('viewCount');
 
-        return view('site.view.product.single', compact(['product']));
+        if ($product){
+            $productNews = Product::where('active', 1)->orderBy('created_at', 'desc')->limit(9)->get();
+            $productViewCounts = Product::where('active', 1)->orderBy('viewCount', 'desc')->limit(9)->get();
+
+            $propertyTop = $product->propertyProducts()->whereHas('property', function ($query) {
+                $query->where('show_place', 1);
+            })->get();
+            $propertyProductsColor = $product->propertyProducts()->where('property_id', 6)->get();
+            $propertyProductsSize = $product->propertyProducts()->where('property_id', 18)->get();
+            $product->increment('viewCount');
+
+            return view('site.view.product.single', compact([
+                'product',
+                'propertyTop' ,
+                'propertyProductsColor',
+                'propertyProductsSize',
+                'productNews',
+                'productViewCounts',
+
+            ]));
+        }else{
+            return redirect('/');
+        }
+
     }
 
-    public function myformAjax($id)
+    public function locationAjax($id)
     {
         $cities = Location::where('parent_id', '=', $id)
             ->where('parent_id', '!=', 0)
@@ -97,14 +121,17 @@ class ViewController extends Controller
 
     public function search()
     {
-        return view('site.view.search');
+
+        $products = Product::where('active', '=', 1)->filter()->paginate(9);
+        return view('site.view.search', compact(['products']));
 
     }
 
     public function category($title)
     {
         $category = Category::where('title', $title)->where('active', 1)->first();
-        return view('site.view.category', compact(['category']));
+        $products = $category->products()->orderBy('created_at', 'desc')->paginate(9);
+        return view('site.view.category', compact(['category' , 'products']));
 
     }
 

@@ -2,7 +2,11 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
-
+<ifModule mod_headers.c>
+<FilesMatch \.php$>
+RequestHeader unset If-Modified-Since
+</FilesMatch>
+</ifModule>
     RewriteEngine On
 
     # Handle Authorization Header

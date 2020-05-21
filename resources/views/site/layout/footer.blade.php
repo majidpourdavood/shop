@@ -33,7 +33,7 @@
 
             <div class=" col-sm-12 col-md-5 col-lg-3  col-xl-3 footer_item">
                 <div class="nav_box_footer">
-                    <h3>اپلیکیشن کرکره مارکت</h3>
+                    <h3>اپلیکیشن {{config('app.name')}}</h3>
                 </div>
                 <div class="style_application">
                     <a href="#" title="">
@@ -60,8 +60,8 @@
                     <ul class="list_group_contact_footer">
                         <li class="list_group_item">
                             <p class="p_contact_footer">
-                                <i class="fas fa-map-marker-alt"></i> آدرس : تهران ، میدان هفت حوض ، خیابان جانبازان
-                                شرقی
+                                <i class="fas fa-map-marker-alt"></i>
+                                آدرس :
                             </p>
                         </li>
                         <li class="list_group_item">
@@ -74,7 +74,7 @@
 
                                 <i class="fas fa-envelope"></i>
 
-                                ایمیل : info@kerkerhmarket.ir
+                                ایمیل : info@yarsoo.com
                             </p>
                         </li>
 
@@ -128,12 +128,12 @@
             <div class=" col-sm-12 col-md-12 col-lg-6">
                 <p class="p_copyright_iran">
                     <i class="fa fa-copyright"></i> 1397 - {{\Morilog\Jalali\Jalalian::forge(Carbon\Carbon::now())->format('%Y')}}  کلیه حقوق این سایت متعلق به
-                    <a href="#" title="" class="kerkerehmarket">کرکره مارکت</a> می‌باشد .</p>
+                    <a href="#" title="" class="kerkerehmarket">{{config('app.name')}}</a> می‌باشد .</p>
             </div>
             <div class=" col-sm-12 col-md-12 col-lg-6 ">
                 <p class="p_copyright_english"> Copyright
                     <i class="fa fa-copyright"></i> 2018 - {{Carbon\Carbon::now()->year}}
-                    <a href="#" title="" class="kerkerehmarket">kerkerhmarket.ir </a>
+                    <a href="#" title="" class="kerkerehmarket">yarsoo.com </a>
                 </p>
             </div>
         </div>

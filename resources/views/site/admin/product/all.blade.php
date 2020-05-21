@@ -33,7 +33,7 @@
                     <th width="5%">ردیف</th>
                     <th width="15%">عنوان</th>
                     <th width="10%">دسته</th>
-                    <th width="10%">قیمت</th>
+                    {{--<th width="10%">قیمت</th>--}}
                     <th width="10%">تصویر</th>
                     <th width="10%">وضعیت</th>
                     <th>تاریخ</th>
@@ -47,9 +47,9 @@
 
                         <td>{{ $product->title }}</td>
                         <td>{{ App\Model\Category::find($product->cate_id)->title  }}</td>
-                        <td>{{ $product->price }} تومان</td>
+{{--                        <td>{{ $product->price }} تومان</td>--}}
                         <td>
-                            @if(isset($product->images))
+                            @if($product->images)
                                 <a target="_blank" href="{{ $product->images[0] }}">
                                     <img width="90" height="90" src="{{ $product->images[0] }}" alt=""></a></td>
                         @endif

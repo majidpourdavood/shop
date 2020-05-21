@@ -39,14 +39,18 @@
 
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 col">
-                    <div class="input-group style_search_coli">
-                        <input type="text" class="form-control form_search"
-                               placeholder=" محصول مورد نظرتان را جستجو کنید ..." aria-label="Recipient's username"
-                               aria-describedby="basic-addon2">
-                        <button class="btn btn-outline-secondary search_submit" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
+                    <form action="/search" method="get">
+                        <div class="input-group style_search_coli">
+                            <input type="text" class="form-control form_search"
+                                   name="title" placeholder=" محصول مورد نظرتان را جستجو کنید ..."
+                                   aria-describedby="basic-addon2"
+                                   value="{{request('title')}}"
+                                   autocomplete="on"  >
+                            <button class="btn btn-outline-secondary search_submit" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 col">
@@ -77,23 +81,66 @@
 
 
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 col">
-                    <ul class="list-inline style_login_register">
-                        <li class="list-inline-item">
-                            <i class="fas fa-user"></i>
-                        </li>
-                        <li class="list-inline-item login_style">
-                            <a class="login_style" href="{{route('login')}}" title="ورود">ورود</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fas fa-user-plus"></i>
 
-                        </li>
-                        <li class="list-inline-item login_style">
-                            <a class="login_style" href="{{route('register')}}" title="ثبت نام">ثبت نام</a>
-                        </li>
+                    @if (Route::has('login'))
+                        <ul class="list-inline style_login_register">
+                            @auth
+                                <li class="nav-item dropdown login_style dropdown-auth">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <i class="fa fa-user"></i>
+                                        {{ Auth::user()->name }} {{ Auth::user()->lastName }}
+
+                                        <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('خروج') }}
+                                        </a>
+
+                                        @if(auth()->user()->hasRole('admin'))
+                                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                                {{ __('پنل کاربری') }}
+                                            </a>
+                                        @else
+
+                                            <a class="dropdown-item" href="{{ route('panelUser') }}">
+                                                {{ __('پنل کاربری') }}
+                                            </a>
+                                        @endif
 
 
-                    </ul>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="list-inline-item">
+                                    <i class="fas fa-user"></i>
+                                </li>
+                                <li class="list-inline-item login_style">
+                                    <a class="login_style" href="{{route('login')}}" title="ورود">ورود</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="fas fa-user-plus"></i>
+
+                                </li>
+                                <li class="list-inline-item login_style">
+                                    <a class="login_style" href="{{route('register')}}" title="ثبت نام">ثبت نام</a>
+                                </li>
+
+
+
+                            @endauth
+                        </ul>
+                    @endif
+
+
                 </div>
 
             </div>
@@ -108,9 +155,9 @@
                     data-target=".navbar-collapse">
                 <i class="fa fa-bars fa_bars" aria-hidden="true"></i>
             </button>
-            <a class="navbar-brand" href="/" title="KerkerhMarket">
+            <a class="navbar-brand" href="/" title="Yarsoo">
                 <!-- <img src="http://p14.lublin.eu/wp-content/themes/niebieski1/images/object755493490.png" height="28" alt="Przedszkole nr 14 w Lublinie"> -->
-                <span class="color_clothing">Kerkerh</span>Market</a>
+                <span class="color_clothing">Yarsoo</span></a>
             <div class="navbar-collapse collapse navbar_clothing">
                 <ul class="nav navbar-nav">
 

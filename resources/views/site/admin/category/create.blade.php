@@ -78,6 +78,20 @@
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 item-parent-input">
                             <div class="row one">
+                                <label for="type_weight" class="col-12 col-form-label text-right">تعیین  وزن</label>
+                                <div class="col-12">
+                                    <select name="type_weight" class="form-control" value="{{ old('type_weight') }}" id="type_weight">
+                                        <option value="0">محصول عادی</option>
+                                        <option value="1"> محصول سنگین</option>
+                                        <option value="2"> محصول فوق سنگین</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 item-parent-input">
+                            <div class="row one">
                                 <label for="image" class="col-12 col-form-label text-right"> تصویر اصلی
                                     دسته</label>
                                 <div class="col-12">
@@ -139,7 +153,7 @@
 
                 table += (
                     '<li class="list-group-item d-flex justify-content-between align-items-center">' +
-                    '<p class="value-item">'+ dInput + '</p>'
+                    '<p class="value-item">' + dInput + '</p>'
                     + '<input type="hidden" class="value-item-input" value="' + dInput + '">'
 
                     + '<button type="button" class="btn btn-danger delete-radio" >' +

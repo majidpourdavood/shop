@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     {{--    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/') }}">--}}
-    <title>کرکره مارکت | بزرگترین فروشگاه اینترنتی </title>
-    <meta name="description" content="کرکره مارکت | بزرگترین فروشگاه اینترنتی">
+    <title>{{config('app.name')}}  | بزرگترین فروشگاه اینترنتی </title>
+    <meta name="description" content="{{config('app.name')}} | بزرگترین فروشگاه اینترنتی">
     <meta name="keywords" content="">
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -21,7 +21,7 @@
 
 </head>
 <body>
-{{--{{dd(\App\User::all())}}--}}
+{{--{{dd(bcrypt('123456'))}}--}}
 @include('site.layout.header')
 <div class="content">
     <div class="container">
@@ -80,7 +80,7 @@
         <section class="section_parent_clothing_slider">
             <div class="row">
                 <h3 class="title_slider_product"> جدیدترین محصولات -
-                    <a class="link_title_product_clothing" href="{{route('search',['type'=>'new'])}}">نمایش همه</a>
+                    <a class="link_title_product_clothing" href="{{route('search',['type_page'=>'new'])}}">نمایش همه</a>
                 </h3>
             </div>
             <section class="slider_clothing_product owl-carousel owl-theme">
@@ -129,7 +129,7 @@
         <section class="section_parent_clothing_slider">
             <div class="row">
                 <h3 class="title_slider_product"> محصولات پربازدید -
-                    <a class="link_title_product_clothing" href="{{route('search',['type'=>'visit'])}}">نمایش همه</a>
+                    <a class="link_title_product_clothing" href="{{route('search',['type_page'=>'visit'])}}">نمایش همه</a>
                 </h3>
             </div>
             <section class="slider_clothing_product owl-carousel owl-theme">

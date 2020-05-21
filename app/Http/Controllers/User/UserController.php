@@ -4,12 +4,6 @@ namespace App\Http\Controllers\User;
 
 
 use App\Http\Controllers\Controller;
-use App\Location;
-use App\Model\Contact;
-use App\Model\Product;
-use App\Notifications\NotificationSendAll;
-use App\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -33,7 +27,7 @@ class UserController extends Controller
     public function address()
     {
 
-        return view('site.view.cart.address');
+        return view('site.user.address');
     }
 
     /**

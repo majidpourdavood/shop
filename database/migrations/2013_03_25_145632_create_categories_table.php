@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->integer('parent_id');
             $table->boolean('active')->default(false)->nullable();
+            $table->boolean('type_weight')->default(false)->nullable();
             $table->boolean('type')->default(false)->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

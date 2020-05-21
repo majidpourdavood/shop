@@ -75,6 +75,7 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->parent_id = $request->parent_id;
         $category->type = $request->type;
+        $category->type_weight = $request->type_weight;
         $category->active = $request->active;
         if ($request->hasFile('image')) {
             $filename = $request->file('image');
@@ -176,6 +177,7 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->parent_id = $request->parent_id;
         $category->type = $request->type;
+        $category->type_weight = $request->type_weight;
         $category->active = $request->active;
         if ($request->hasFile('image')) {
             $filename = $request->file('image');

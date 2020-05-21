@@ -32,14 +32,13 @@
         <form class="form-horizontal form_panel" action="{{ route('storePropertyProduct' , $product->id ) }}"
               method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
 
 
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
                        aria-controls="nav-home" aria-selected="true">مشخصات فنی</a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                       aria-controls="nav-profile" aria-selected="false">مشخصات تاثیرگذار بر قیمت</a>
 
                 </div>
             </nav>
@@ -62,7 +61,7 @@
                                                     id="{{$property->key}}">
                                                 @foreach($property->optionProperty as $option)
                                                     <option value="{{$option->id}}"
-                                                            {{$property->propertyProduct->option_property_id == $option->id ? 'selected' : ''}}
+                                                            {{ isset($property->propertyProduct) ? ($property->propertyProduct->option_property_id == $option->id ? 'selected' : '') : ''}}
                                                     >{{$option->value}}</option>
                                                 @endforeach
                                             </select>
@@ -99,75 +98,75 @@
 
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div class="row parent-input-panel input-filter">
+                    {{--<div class="row parent-input-panel input-filter">--}}
 
 
-                        <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
 
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">
-                            <div class="form-group">
-                                <label for="property_id">ویژگی</label>
-                                <select class="form-control" name="property_id" id="property_id">
-                                    @foreach($product->category->properties()->where('type', 1)->get() as $property)
-                                        <option value="{{$property->id}}">{{$property->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">
-                            <div class="form-group">
-                                <label for="key_value_id">فیلتر</label>
-                                <select class="form-control" name="key_value_id" id="key_value_id">
-                                    @foreach(\App\Model\KeyValue::all() as $filter)
-                                        <option value="{{$filter->id}}">{{$filter->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        {{--<div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="property_id">ویژگی</label>--}}
+                                {{--<select class="form-control" name="property_id" id="property_id">--}}
+                                    {{--@foreach($product->category->properties()->where('type', 1)->get() as $property)--}}
+                                        {{--<option value="{{$property->id}}">{{$property->name}}</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="key_value_id">فیلتر</label>--}}
+                                {{--<select class="form-control" name="key_value_id" id="key_value_id">--}}
+                                    {{--@foreach(\App\Model\KeyValue::where('type', 'color')->orWhere('type', 'size')->get() as $filter)--}}
+                                        {{--<option value="{{$filter->id}}">{{$filter->name}}</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">
-                            <div class="form-group">
-                                <label for="price">قیمت</label>
-                                <input type="text" class="form-control" id="price" value="" required="required">
-                            </div>
-                        </div>
+                        {{--<div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="price">قیمت</label>--}}
+                                {{--<input type="text" class="form-control" id="price" value="" required="required">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">
+                        {{--<div class="col-12 col-sm-6 col-md-6 col-lg-4 item-parent-input">--}}
 
-                            <div class="form-group">
-                                <label for=""></label>
-                                <button type="button" class="btn btn-info " id="submit-filter">
-                                    <i class="fa fa-plus"></i>
-                                    اضافه
-                                </button>
-                            </div>
-                        </div>
+                            {{--<div class="form-group">--}}
+                                {{--<label for=""></label>--}}
+                                {{--<button type="button" class="btn btn-info " id="submit-filter">--}}
+                                    {{--<i class="fa fa-plus"></i>--}}
+                                    {{--اضافه--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                    </div>
-                    <ul class="list-group-item all-item-property-product list-group-add">
-                        @foreach($product->propertyProducts()->where('type', 1)->get() as $propertyProduct)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <p class="value-item-{{$propertyProduct->id}}">
+                    {{--</div>--}}
 
-                                    {{$propertyProduct->property->name}} : {{$propertyProduct->keyValue->name}} --
+                    {{--<ul class="list-group-item all-item-property-product list-group-add">--}}
+                        {{--@foreach($product->propertyProducts()->where('type', 1)->get() as $propertyProduct)--}}
+                            {{--<li class="list-group-item d-flex justify-content-between align-items-center">--}}
+                                {{--<p class="value-item-{{$propertyProduct->id}}">--}}
 
-                                   قیمت :  {{$propertyProduct->price}} </p>
-                                <input type="hidden" class="value-item-input-{{$propertyProduct->id}}"
-                                       value="{{$propertyProduct->price}}">
-                                <div class="btn-group">
-                                    <button id="option-delete-{{$propertyProduct->id}}"
-                                            href="{{ action('Admin\ProductController@propertyProductDelete', ['id' => $propertyProduct->id]) }}"
-                                            data-token="{{ csrf_token() }}"
-                                            data-id="{{ $propertyProduct->id }}"
-                                            type="button" class="btn btn-danger delete-radio">
-                                        <i class="fas fa-trash"></i></button>
-                                </div>
-                            </li>
+                                    {{--{{$propertyProduct->property->name}} : {{$propertyProduct->keyValue->name}} ----}}
 
-                        @endforeach
+                                   {{--قیمت :  {{$propertyProduct->price}} </p>--}}
+                                {{--<input type="hidden" class="value-item-input-{{$propertyProduct->id}}"--}}
+                                       {{--value="{{$propertyProduct->price}}">--}}
+                                {{--<div class="btn-group">--}}
+                                    {{--<button id="option-delete-{{$propertyProduct->id}}"--}}
+                                            {{--href="{{ action('Admin\ProductController@propertyProductDelete', ['id' => $propertyProduct->id]) }}"--}}
+                                            {{--data-token="{{ csrf_token() }}"--}}
+                                            {{--data-id="{{ $propertyProduct->id }}"--}}
+                                            {{--type="button" class="btn btn-danger delete-radio">--}}
+                                        {{--<i class="fas fa-trash"></i></button>--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
 
-                    </ul>
-                    <hr>
+                        {{--@endforeach--}}
+
+                    {{--</ul>--}}
+                    {{--<hr>--}}
 
                 </div>
             </div>
@@ -194,93 +193,93 @@
     <script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
 
     <script>
-        var filter = [];
-        $(document).on('click', '#submit-filter', function (e) {
+        {{--var filter = [];--}}
+        {{--$(document).on('click', '#submit-filter', function (e) {--}}
 
-            e.preventDefault();
-            var inputFilter = $('.input-filter');
-            var property_id = inputFilter.find('#property_id').val();
-            var product_id = inputFilter.find('#product_id').val();
-            var price = inputFilter.find('#price').val();
-            var key_value_id = inputFilter.find('#key_value_id').val();
+            {{--e.preventDefault();--}}
+            {{--var inputFilter = $('.input-filter');--}}
+            {{--var property_id = inputFilter.find('#property_id').val();--}}
+            {{--var product_id = inputFilter.find('#product_id').val();--}}
+            {{--var price = inputFilter.find('#price').val();--}}
+            {{--var key_value_id = inputFilter.find('#key_value_id').val();--}}
 
-            if(price == '' || price == null || price == ' ' || price == " " || price == ""){
-                return alert('قیمت را وارد کنید !')
-            }
-            var formdata = new FormData();
-            formdata.append('_token', "{{csrf_token()}}");
-            formdata.append('price', price);
-            formdata.append('product_id', product_id);
-            formdata.append('property_id', property_id);
-            formdata.append('key_value_id', key_value_id);
-            $.ajax({
-                method: 'post',
-                url: '/admin/property-product-post',
-                data: formdata,
-                dataType: 'JSON',
-                contentType: false,
-                cache: false,
-                processData: false,
-            })
-                .done(function (data) {
-                    console.log(data);
-                    var token = $('meta[name="csrf-token"]').attr('content');
+            {{--if(price == '' || price == null || price == ' ' || price == " " || price == ""){--}}
+                {{--return alert('قیمت را وارد کنید !')--}}
+            {{--}--}}
+            {{--var formdata = new FormData();--}}
+            {{--formdata.append('_token', "{{csrf_token()}}");--}}
+            {{--formdata.append('price', price);--}}
+            {{--formdata.append('product_id', product_id);--}}
+            {{--formdata.append('property_id', property_id);--}}
+            {{--formdata.append('key_value_id', key_value_id);--}}
+            {{--$.ajax({--}}
+                {{--method: 'post',--}}
+                {{--url: '/admin/property-product-post',--}}
+                {{--data: formdata,--}}
+                {{--dataType: 'JSON',--}}
+                {{--contentType: false,--}}
+                {{--cache: false,--}}
+                {{--processData: false,--}}
+            {{--})--}}
+                {{--.done(function (data) {--}}
+                    {{--console.log(data);--}}
+                    {{--var token = $('meta[name="csrf-token"]').attr('content');--}}
 
-                    if (data.status == 'success') {
-                        var table = '';
-                        table += (
-                            '<li class="list-group-item d-flex justify-content-between align-items-center">' +
-                            ' <p class="value-item-' + data.propertyProduct.id + '"> ' +
-                            data.property.name +' : '+ data.keyValue.name + ' -- قیمت : '+
-                            data.propertyProduct.price
+                    {{--if (data.status == 'success') {--}}
+                        {{--var table = '';--}}
+                        {{--table += (--}}
+                            {{--'<li class="list-group-item d-flex justify-content-between align-items-center">' +--}}
+                            {{--' <p class="value-item-' + data.propertyProduct.id + '"> ' +--}}
+                            {{--data.property.name +' : '+ data.keyValue.name + ' -- قیمت : '+--}}
+                            {{--data.propertyProduct.price--}}
 
-                            + ' </p>'
-                            + '<input type="hidden" class="value-item-input-' + data.propertyProduct.id + '" value="' + data.propertyProduct.price + '">'
-                            + '<div class="btn-group"><button type="button" id="option-delete-' + data.propertyProduct.id + '"' +
-                            ' href="/admin/property-product-delete/' + data.propertyProduct.id + '"' +
-                            ' data-token="' + token + '"' + ' data-id="' + data.propertyProduct.id + '"' + ' class="btn btn-danger delete-radio" >' +
-                            '<i class="fas fa-trash"></i></button>'
-                            +
-                            '</div>' +
-                            '</li>'
-                        );
+                            {{--+ ' </p>'--}}
+                            {{--+ '<input type="hidden" class="value-item-input-' + data.propertyProduct.id + '" value="' + data.propertyProduct.price + '">'--}}
+                            {{--+ '<div class="btn-group"><button type="button" id="option-delete-' + data.propertyProduct.id + '"' +--}}
+                            {{--' href="/admin/property-product-delete/' + data.propertyProduct.id + '"' +--}}
+                            {{--' data-token="' + token + '"' + ' data-id="' + data.propertyProduct.id + '"' + ' class="btn btn-danger delete-radio" >' +--}}
+                            {{--'<i class="fas fa-trash"></i></button>'--}}
+                            {{--+--}}
+                            {{--'</div>' +--}}
+                            {{--'</li>'--}}
+                        {{--);--}}
 
-                        table += '';
-                        $(".all-item-property-product").prepend(table);
-                    }
-
-
-                }).fail(function (data) {
-                console.log(data);
-
-            });
+                        {{--table += '';--}}
+                        {{--$(".all-item-property-product").prepend(table);--}}
+                    {{--}--}}
 
 
-        });
+                {{--}).fail(function (data) {--}}
+                {{--console.log(data);--}}
+
+            {{--});--}}
 
 
-        $(document).on('click', '.delete-radio', function (e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            $.ajax({
-                method: 'delete',
-                url: $(this).attr('href'),
-                data: {
-                    _token: $(this).data('token')
-                },
-                success: function (data) {
-                    console.log(data);
-                    if (data.status == 'success') {
+        {{--});--}}
 
-                        $('#option-delete-' + id).parent().parent().remove();
-                    }
 
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            })
-        });
+        {{--$(document).on('click', '.delete-radio', function (e) {--}}
+            {{--e.preventDefault();--}}
+            {{--var id = $(this).data('id');--}}
+            {{--$.ajax({--}}
+                {{--method: 'delete',--}}
+                {{--url: $(this).attr('href'),--}}
+                {{--data: {--}}
+                    {{--_token: $(this).data('token')--}}
+                {{--},--}}
+                {{--success: function (data) {--}}
+                    {{--console.log(data);--}}
+                    {{--if (data.status == 'success') {--}}
+
+                        {{--$('#option-delete-' + id).parent().parent().remove();--}}
+                    {{--}--}}
+
+                {{--},--}}
+                {{--error: function (error) {--}}
+                    {{--console.log(error);--}}
+                {{--}--}}
+            {{--})--}}
+        {{--});--}}
 
 
         $(document).on('click', '#submit-form', function (e) {

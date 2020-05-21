@@ -4,7 +4,9 @@ namespace App\Model;
 
 use App\Discount;
 use App\Rating;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -23,6 +25,33 @@ class Product extends Model
         'images' => 'array',
         'details' => 'array',
     ];
+
+    public function scopeFilter($query)
+    {
+
+        $title = request('title');
+        if (isset($title) && trim($title) != '') {
+            $query->where('title', 'like', '%' . $title . '%');
+        }
+
+        $type_page = request('type_page');
+        if (isset($type_page) && trim($type_page) != '') {
+            if ($type_page == 'new') {
+                $query->orderBy('created_at', 'desc');
+            } else if ($type_page = 'visit') {
+//                $query->where('viewCount', 'desc');
+//                $query->orderBy(DB::raw('COUNT(products.viewCount)', 'desc'));
+                $query->orderBy('viewCount' , 'desc');
+            }
+        }
+
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
     public function category()
     {

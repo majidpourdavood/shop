@@ -47,20 +47,7 @@
             </div>
 
 
-            <div class="content_price">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="name_price[]"
-                           {{$category->properties()->where('key','color')->first() ? 'checked' : ''}}
-                           value="color" id="color">
-                    <label class="custom-control-label" for="color">color</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="name_price[]"
-                           {{$category->properties()->where('key','size')->first() ? 'checked' : ''}}
-                           value="size" id="size">
-                    <label class="custom-control-label" for="size">size</label>
-                </div>
-            </div>
+
 
             <div class="content_attribute">
 
@@ -91,7 +78,8 @@
                             <div class="col-12">
                                 <select name="head_property_id" class="form-control"
                                         value="{{ old('head_property_id') }}" id="head_property_id">
-                                    @foreach($category->headProperties as $pro)
+                                    <option value="0"> نیازی نیست</option>
+                                @foreach($category->headProperties as $pro)
 
                                         <option value="{{$pro->id}}"
                                                 {{ $category->head_property_id == $pro->id ? 'selected' : '' }}
@@ -328,17 +316,13 @@
             var type = $('#type').find('option:selected').val();
             console.log(type);
             if (type == 0) {
-                $('.content_price').hide();
                 $('.content_attribute').show();
                 $('.property-product').show();
 
             } else if (type == 1) {
-                $('.content_price').show();
-                $('.content_attribute').hide();
-                $('.property-product').hide();
-
+                $('.content_attribute').show();
+                $('.property-product').show();
             } else if (type == 2) {
-                $('.content_price').hide();
                 $('.property-product').hide();
                 $('.content_attribute').show();
             }
@@ -348,23 +332,19 @@
             console.log($(this).find('option:selected').val());
             var type2 = $(this).find('option:selected').val();
             if (type2 == 0) {
-                $('.content_price').hide();
                 $('.content_attribute').show();
                 $('.property-product').show();
 
             } else if (type2 == 1) {
-                $('.content_price').show();
-                $('.content_attribute').hide();
-                $('.property-product').hide();
+                $('.content_attribute').show();
+                $('.property-product').show();
             } else if (type2 == 2) {
-                $('.content_price').hide();
                 $('.property-product').hide();
                 $('.content_attribute').show();
             }
 
 
         });
-
 
         $('#value').select2({
             tags: true,

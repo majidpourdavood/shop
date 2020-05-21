@@ -56,29 +56,49 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="price" class="col-md-2 col-xs-12 control-label text-right">قیمت</label>
-                <div class="col-md-10 col-xs-12">
-                    <input type="text" name="price" class="form-control"
-                           value="{{ old('price', $product->price) }}" placeholder="قیمت">
-                </div>
-            </div>
+            {{--<div class="form-group row">--}}
+                {{--<label for="price" class="col-md-2 col-xs-12 control-label text-right">قیمت</label>--}}
+                {{--<div class="col-md-10 col-xs-12">--}}
+                    {{--<input type="text" name="price" class="form-control"--}}
+                           {{--value="{{ old('price', $product->price) }}" placeholder="قیمت">--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
-            <div class="form-group row">
-                <label for="stock" class="col-md-2 col-xs-12 control-label text-right">موجودی انبار</label>
-                <div class="col-md-10 col-xs-12">
-                    <input type="text" name="stock" class="form-control"
-                           value="{{  old('stock', $product->stock) }}" placeholder="">
-                </div>
-            </div>
+            {{--<div class="form-group row">--}}
+                {{--<label for="stock" class="col-md-2 col-xs-12 control-label text-right">موجودی انبار</label>--}}
+                {{--<div class="col-md-10 col-xs-12">--}}
+                    {{--<input type="text" name="stock" class="form-control"--}}
+                           {{--value="{{  old('stock', $product->stock) }}" placeholder="">--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
-            <div class="form-group row">
-                <label for="discount" class="col-md-2 col-xs-12 control-label text-right">درصد تخفیف خورده</label>
-                <div class="col-md-10 col-xs-12">
-                    <input type="text" name="discount" class="form-control"
-                           value="{{ old('discount', $product->discount) }}" placeholder="">
-                </div>
-            </div>
+
+                {{--<div class="form-group row">--}}
+                    {{--<label for="post_work_day" class="col-md-2 col-xs-12 control-label text-right">ارسال روز کاری</label>--}}
+                    {{--<div class="col-md-10 col-xs-12">--}}
+                        {{--<select name="post_work_day" class="form-control" value="{{ old('post_work_day') }}" id="post_work_day">--}}
+                            {{--<option value="0" {{ $product->post_work_day == 0 ? 'selected' : '' }}>آماده ارسال</option>--}}
+                            {{--<option value="1" {{ $product->post_work_day == 1 ? 'selected' : '' }}> از یک روز کاری</option>--}}
+                            {{--<option value="2" {{ $product->post_work_day == 2 ? 'selected' : '' }}> از دو روز کاری</option>--}}
+                            {{--<option value="3" {{ $product->post_work_day == 3 ? 'selected' : '' }}> از سه روز کاری</option>--}}
+                            {{--<option value="4" {{ $product->post_work_day == 4 ? 'selected' : '' }}> از چهار روز کاری</option>--}}
+                            {{--<option value="5" {{ $product->post_work_day == 5 ? 'selected' : '' }}> از پنج روز کاری</option>--}}
+                            {{--<option value="6" {{ $product->post_work_day == 6 ? 'selected' : '' }}> از شش روز کاری</option>--}}
+                            {{--<option value="7" {{ $product->post_work_day == 7 ? 'selected' : '' }}> از هفت روز کاری</option>--}}
+                            {{--<option value="8" {{ $product->post_work_day == 8 ? 'selected' : '' }}> از هشت روز کاری</option>--}}
+                            {{--<option value="9" {{ $product->post_work_day == 9 ? 'selected' : '' }}> از نه روز کاری</option>--}}
+                        {{--</select>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+
+            {{--<div class="form-group row">--}}
+                {{--<label for="discount" class="col-md-2 col-xs-12 control-label text-right">درصد تخفیف خورده</label>--}}
+                {{--<div class="col-md-10 col-xs-12">--}}
+                    {{--<input type="text" name="discount" class="form-control"--}}
+                           {{--value="{{ old('discount', $product->discount) }}" placeholder="">--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
             <div class="form-group row">
                 <label for="type" class="col-md-2 col-form-label text-md-right">وضعیت فروش</label>

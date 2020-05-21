@@ -1,4 +1,4 @@
-@section('title' , ' | محصول ')
+@section('title' , ' | سبد خرید ')
 @section('description' , '')
 @extends('site.master')
 @section('css')
@@ -12,7 +12,7 @@
 
             <div class="parent_table_buy clothing">
 
-                <h1 class="h1_page_show_buy"><i class="fas fa-caret-left"></i> سبد خرید شما در کرکره مارکت </h1>
+                <h1 class="h1_page_show_buy"><i class="fas fa-caret-left"></i> سبد خرید شما در {{config('app.name')}}  </h1>
                 @if($products)
                     <table class="table table-responsive-md table_page_buy">
                         <thead class="thead-light">
@@ -72,27 +72,27 @@
                             {{--</div>--}}
 
 
-                            <form class="form-horizontal discount" id="form_discount" action="{{route('discount')}}"
-                                  method="post">
-                                {{ csrf_field() }}
-                                <div class="form-row">
-                                    <div class="col-12 col-sm-9 col-md-7 col-lg-5 col-xl-4">
-                                        <input type="text" class="form-control"
-                                               placeholder="کد تخفیف خود را اینجا وارد نمایید"
-                                               name="code" aria-label="Recipient's username"
-                                               aria-describedby="basic-addon2">
-                                    </div>
-                                    <div class="col">
-                                        <div class="input-group-append">
-                                            <button class="btn input-group-text" type="button" id="basic-addon2">ثبت
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <span class="message_discount"></span>
-                                    </div>
-                                </div>
-                            </form>
+                            {{--<form class="form-horizontal discount" id="form_discount" action="{{route('discount')}}"--}}
+                            {{--method="post">--}}
+                            {{--{{ csrf_field() }}--}}
+                            {{--<div class="form-row">--}}
+                            {{--<div class="col-12 col-sm-9 col-md-7 col-lg-5 col-xl-4">--}}
+                            {{--<input type="text" class="form-control"--}}
+                            {{--placeholder="کد تخفیف خود را اینجا وارد نمایید"--}}
+                            {{--name="code" aria-label="Recipient's username"--}}
+                            {{--aria-describedby="basic-addon2">--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                            {{--<div class="input-group-append">--}}
+                            {{--<button class="btn input-group-text" type="button" id="basic-addon2">ثبت--}}
+                            {{--</button>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="col">--}}
+                            {{--<span class="message_discount"></span>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</form>--}}
                         </div>
                         <div class="col-xs-8 col-sm-6 col-md-7 col-lg-8 text_center_576">
                             <p class="price_col_page_kharid">مبلغ کل:
@@ -111,83 +111,86 @@
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text_center_576">
                             <!-- <p class="p_text_buy_left">مبلغ کل: 68,500,000ریال  </p> -->
-                            <a class="btn bottom_buy_left" href="#">ثبت سفارش</a>
+                            <a class="btn bottom_buy_left" href="{{route('setAddress')}}">ثبت سفارش</a>
                         </div>
 
 
                     </div>
-                    <div class="row time_send_page_payment clothing">
+                    {{--<div class="row col-12">--}}
+                        {{--<div class="row col-12 time_send_page_payment clothing">--}}
 
-                        <h3>تاریخ ارسال کالای خود را مشخص کنید</h3>
+                            {{--<h3>تاریخ ارسال کالای خود را مشخص کنید</h3>--}}
 
-                    </div>
-                    <div class="row no-gutters clothing">
+                        {{--</div>--}}
+                        {{--<div class="row no-gutters clothing">--}}
 
-                        <div class="box_time_page_payment active">
-                            <div class="text_time_page_payment">
-                                <p>شنبه</p>
-                                <p> 1397/01/18</p>
-                            </div>
-                            <div class="box_bottom_time_page_payment">
-                                <i class="fas fa-check"></i>
-                            </div>
-                        </div>
-                        <div class="box_time_page_payment">
-                            <div class="text_time_page_payment">
-                                <p>یکشنبه</p>
-                                <p> 1397/01/19</p>
-                            </div>
-                            <div class="box_bottom_time_page_payment">
-                                <i class="fas fa-check"></i>
-                            </div>
-                        </div>
-                        <div class="box_time_page_payment">
-                            <div class="text_time_page_payment">
-                                <p>دوشنبه</p>
-                                <p> 1397/01/20</p>
-                            </div>
-                            <div class="box_bottom_time_page_payment">
-                                <i class="fas fa-check"></i>
-                            </div>
-                        </div>
-                        <div class="box_time_page_payment">
-                            <div class="text_time_page_payment">
-                                <p>سه شنبه</p>
-                                <p> 1397/01/21</p>
-                            </div>
-                            <div class="box_bottom_time_page_payment">
-                                <i class="fas fa-check"></i>
-                            </div>
-                        </div>
-                        <div class="box_time_page_payment">
-                            <div class="text_time_page_payment">
-                                <p>چهار شنبه</p>
-                                <p> 1397/01/22</p>
-                            </div>
-                            <div class="box_bottom_time_page_payment">
-                                <i class="fas fa-check"></i>
-                            </div>
-                        </div>
-                        <div class="box_time_page_payment">
-                            <div class="text_time_page_payment">
-                                <p>پنج شنبه</p>
-                                <p> 1397/01/23</p>
-                            </div>
-                            <div class="box_bottom_time_page_payment">
-                                <i class="fas fa-check"></i>
-                            </div>
-                        </div>
-                        <div class="box_time_page_payment">
-                            <div class="text_time_page_payment">
-                                <p>جمعه</p>
-                                <p> 1397/01/24</p>
-                            </div>
-                            <div class="box_bottom_time_page_payment">
-                                <i class="fas fa-check"></i>
-                            </div>
-                        </div>
+                            {{--<div class="box_time_page_payment active">--}}
+                                {{--<div class="text_time_page_payment">--}}
+                                    {{--<p>شنبه</p>--}}
+                                    {{--<p> 1397/01/18</p>--}}
+                                {{--</div>--}}
+                                {{--<div class="box_bottom_time_page_payment">--}}
+                                    {{--<i class="fas fa-check"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="box_time_page_payment">--}}
+                                {{--<div class="text_time_page_payment">--}}
+                                    {{--<p>یکشنبه</p>--}}
+                                    {{--<p> 1397/01/19</p>--}}
+                                {{--</div>--}}
+                                {{--<div class="box_bottom_time_page_payment">--}}
+                                    {{--<i class="fas fa-check"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="box_time_page_payment">--}}
+                                {{--<div class="text_time_page_payment">--}}
+                                    {{--<p>دوشنبه</p>--}}
+                                    {{--<p> 1397/01/20</p>--}}
+                                {{--</div>--}}
+                                {{--<div class="box_bottom_time_page_payment">--}}
+                                    {{--<i class="fas fa-check"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="box_time_page_payment">--}}
+                                {{--<div class="text_time_page_payment">--}}
+                                    {{--<p>سه شنبه</p>--}}
+                                    {{--<p> 1397/01/21</p>--}}
+                                {{--</div>--}}
+                                {{--<div class="box_bottom_time_page_payment">--}}
+                                    {{--<i class="fas fa-check"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="box_time_page_payment">--}}
+                                {{--<div class="text_time_page_payment">--}}
+                                    {{--<p>چهار شنبه</p>--}}
+                                    {{--<p> 1397/01/22</p>--}}
+                                {{--</div>--}}
+                                {{--<div class="box_bottom_time_page_payment">--}}
+                                    {{--<i class="fas fa-check"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="box_time_page_payment">--}}
+                                {{--<div class="text_time_page_payment">--}}
+                                    {{--<p>پنج شنبه</p>--}}
+                                    {{--<p> 1397/01/23</p>--}}
+                                {{--</div>--}}
+                                {{--<div class="box_bottom_time_page_payment">--}}
+                                    {{--<i class="fas fa-check"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="box_time_page_payment">--}}
+                                {{--<div class="text_time_page_payment">--}}
+                                    {{--<p>جمعه</p>--}}
+                                    {{--<p> 1397/01/24</p>--}}
+                                {{--</div>--}}
+                                {{--<div class="box_bottom_time_page_payment">--}}
+                                    {{--<i class="fas fa-check"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
-                    </div>
+                        {{--</div>--}}
+                    {{--</div>--}}
+
                 @else
 
                     <h3>سبد خرید شما خالی است !!</h3>

@@ -20,6 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->string('name')->nullable();
             $table->string('key')->nullable();
             $table->boolean('type')->default(false)->nullable();
+            $table->boolean('show_place')->default(false)->nullable();
 
             $table->bigInteger('head_property_id')->unsigned()->nullable();
             $table->foreign('head_property_id')->references('id')->on('head_properties');

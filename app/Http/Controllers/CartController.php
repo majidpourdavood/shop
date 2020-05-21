@@ -25,6 +25,7 @@ class CartController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
+//        dd($cart);
         return view('site.view.cart.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
 
     }
@@ -52,6 +53,34 @@ class CartController extends Controller
 
 //            return redirect()->route('cart');
             return back();
+
+        } else {
+            return redirect('/');
+        }
+
+    }
+    public function addCartSinglePage(Request $request, $slug)
+    {
+        $parentTabe = Product::where('slug', '=', $slug)->first();
+
+        if ($parentTabe) {
+            if (is_null($parentTabe) || $parentTabe->price == 0)
+                return redirect()->route('cart');
+//                return back();
+
+            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $cart = new Cart($oldCart);
+            $cart->add($parentTabe, $parentTabe->id);
+            $request->session()->put('cart', $cart);
+            foreach (Session::get('cart')->items as $item) {
+                if ($item['item']->id == $parentTabe->id) {
+                    return redirect()->route('cart');
+//                    return back();
+                }
+            }
+
+            return redirect()->route('cart');
+//            return back();
 
         } else {
             return redirect('/');
@@ -98,28 +127,28 @@ class CartController extends Controller
         return back();
     }
 
-    public function updateCart(Request $request, $slug_product)
-    {
-//        $this->validate($request, [
-//            'itemdes' => 'required',
-//        ]);
-        $parentTabe = Product::where('slug_product', '=', $slug_product)->first();
-
-        if (is_null($parentTabe) || $parentTabe->price == 0)
-            return redirect()->route('cart');
-
-//        if (request('itemdes') == null || request('itemdes') == '') {
-//            alert()->info('فیلد توضیحات نمی تواند خالی باشد .', 'خطا')->confirmButton('بستن')->autoclose('6000');
-//            return back();
-//        }
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->removeItem($parentTabe->id);
-        $cart->updateCart($parentTabe, $parentTabe->id);
-        $request->session()->put('cart', $cart);
-
-        return redirect()->route('cart');
-    }
+//    public function updateCart(Request $request, $slug_product)
+//    {
+////        $this->validate($request, [
+////            'itemdes' => 'required',
+////        ]);
+//        $parentTabe = Product::where('slug_product', '=', $slug_product)->first();
+//
+//        if (is_null($parentTabe) || $parentTabe->price == 0)
+//            return redirect()->route('cart');
+//
+////        if (request('itemdes') == null || request('itemdes') == '') {
+////            alert()->info('فیلد توضیحات نمی تواند خالی باشد .', 'خطا')->confirmButton('بستن')->autoclose('6000');
+////            return back();
+////        }
+//        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+//        $cart = new Cart($oldCart);
+//        $cart->removeItem($parentTabe->id);
+//        $cart->updateCart($parentTabe, $parentTabe->id);
+//        $request->session()->put('cart', $cart);
+//
+//        return redirect()->route('cart');
+//    }
 
 //    public function updateCartEkhtesasi(Request $request, $id)
 //    {

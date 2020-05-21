@@ -2346,19 +2346,8 @@ select.form-control:not([size]):not([multiple]) {
     background-color: #e91e63;
 }
 
-.label_radio_bottom::before {
-    /* width: 1.05rem;
-            height: 1.01rem; */
-    top: .4rem;
-}
 
-/* .custom-radio .custom-control-input:checked~.label_radio_bottom::after {
-            width: 1.2rem;
-            height: 1.2rem;
-        } */
-.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
-    top: .4rem;
-}
+
 
 
 .custom_control_label::before {
@@ -9511,9 +9500,7 @@ input.qtyminus {
     color: #960aca !important;
 }
 
-.radio_botton_address.clothing .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #960aca;
-}
+
 
 .btn_send_ask.clothing {
     background-color: #960aca;
@@ -9587,9 +9574,7 @@ input.qtyminus {
     color: #960aca;
 }
 
-.clothing .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #960aca;
-}
+
 
 .navigation_category_page.clothing .pagination .page-item a:hover,
 .navigation_category_page.clothing .pagination .page-item a.active,

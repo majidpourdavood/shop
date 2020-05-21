@@ -16,8 +16,8 @@ class CreateOptionPropertiesTable extends Migration
         Schema::create('option_properties', function (Blueprint $table) {
             $table->id();
 
-            $table->boolean('status')->default(true)->nullable();
             $table->text('value')->nullable();
+            $table->string('name')->nullable();
 
             $table->bigInteger('property_id')->unsigned();
             $table->foreign('property_id')->references('id')->on('properties');

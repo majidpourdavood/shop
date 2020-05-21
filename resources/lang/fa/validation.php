@@ -168,6 +168,7 @@ return array(
         "merchantIban" => "کد شبا",
         "step" => "مرحله",
         "importance" => "مهم",
+        "lastName" => "نام خانوادگی",
 
     ),
 );

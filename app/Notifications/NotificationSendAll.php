@@ -15,19 +15,19 @@ class NotificationSendAll extends Notification
     protected  $message;
     protected  $link;
     protected  $link_text;
-    protected  $icon;
+    protected  $class;
     protected  $userSender;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($message, $link,$link_text, $icon,$userSender)
+    public function __construct($message, $link,$link_text, $class,$userSender)
     {
         $this->message = $message;
         $this->link = $link;
         $this->link_text = $link_text;
-        $this->icon = $icon;
+        $this->class = $class;
         $this->userSender = $userSender;
     }
 
@@ -57,7 +57,7 @@ class NotificationSendAll extends Notification
             'user' => $notifiable,
             'link' => $this->link,
             'link_text' => $this->link_text,
-            'icon' => $this->icon,
+            'class' => $this->class,
             'userSender' => $this->userSender,
 
         ];

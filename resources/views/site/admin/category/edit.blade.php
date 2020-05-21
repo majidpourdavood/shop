@@ -73,6 +73,21 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 item-parent-input">
+                            <div class="row one">
+                                <label for="type_weight" class="col-12 col-form-label text-right">تعیین دسته وزن</label>
+                                <div class="col-12">
+                                    <select name="type_weight" class="form-control" value="{{ old('type_weight') }}" id="type_weight">
+                                        <option value="0" {{  $category->type_weight == 0 ? 'selected' : '' }}>محصول عادی</option>
+                                        <option value="1" {{  $category->type_weight == 1 ? 'selected' : '' }}> محصول سنگین</option>
+                                        <option value="2" {{  $category->type_weight == 2 ? 'selected' : '' }}> محصول فوق سنگین</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 item-parent-input">
 
 

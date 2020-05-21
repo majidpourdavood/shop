@@ -22,94 +22,50 @@ class PropertyController extends Controller
 
     public function storeProperty(Request $request)
     {
-//        return $request;
-//        $this->validate($request, [
-//            'key' => 'required',
-//
-//        ]);
 
-        if ($request->type == 1) {
-//            return $request->name_price;
-
-//            $category = Category::findOrFail($request->cate_id);
-//            $colorKey = $category->properties()->where('key', 'color')->get();
-//            if (count($colorKey) > 0) {
-//                alert()->error('شما قبلا ویژگی رنگ را اضافه کردید!!', 'خطا')
-//                    ->confirmButton('بستن')->autoclose('3000');
-//                return back();
-//            }
-//
-//            $sizeKey = $category->properties()->where('key', 'size')->get();
-//            if (count($sizeKey) > 0) {
-//                alert()->error('شما قبلا ویژگی سایز را اضافه کردید!!', 'خطا')
-//                    ->confirmButton('بستن')->autoclose('3000');
-//                return back();
-//            }
-            foreach ($request->name_price as $item) {
-
-                $propertyExsit = Property::where('cate_id', $request->cate_id)
-                    ->where('key', $item)->first();
-                if ($propertyExsit){
-
-                }else{
-                    if ($item == 'color') {
-                        $name = 'رنگ';
-                    } elseif ($item = 'size') {
-                        $name = 'سایز';
-                    }
-                    $property = new Property();
-                    $property->name = $name;
-                    $property->type = $request->type;
-                    $property->cate_id = $request->cate_id;
-                    $property->show_place = $request->show_place;
-                    $property->key = $item;
-                    $property->save();
-                }
-
-            }
-            alert()->success('ویژگی با موفقیت ثبت شد', 'ذخیره ویژگی')->confirmButton('بستن')->autoclose('3000');
+        $propertyExsit = Property::where('cate_id', $request->cate_id)
+            ->where('key', $request->key)->first();
+        if ($propertyExsit) {
+            alert()->error('ویژگی قبلا ثبت شده است', 'ذخیره ویژگی')->confirmButton('بستن')->autoclose('3000');
 
             return back();
         } else {
 
-            $propertyExsit = Property::where('cate_id', $request->cate_id)
-                ->where('key', $request->key)->first();
-            if ($propertyExsit){
-
-            }else{
-
-                $property = new Property();
-                $property->name = $request->name;
+            $property = new Property();
+            $property->name = $request->name;
+            if ($request->head_property_id == 0) {
+                $property->head_property_id = null;
+            } else {
                 $property->head_property_id = $request->head_property_id;
-                $property->cate_id = $request->cate_id;
-                $property->show_place = $request->show_place;
-                $property->type = $request->type;
-                $property->key = $request->key;
-                $property->save();
-
-                $optionProperty = explode(',', $request->optionProperty);
-                $optionProperties = new Collection();
-                foreach ($optionProperty as $key => $value) {
-                    if ($value != "" && $value !== ',' && $value !== ' ' && $value !== ', ' && $value !== ' , ' && $value !== ' ,' && $value != null) {
-                        $optionProperties->push($value);
-                    }
-                }
-
-
-                foreach ($optionProperties as $option) {
-                    $optionProperty3 = new OptionProperty();
-                    $optionProperty3->value = $option;
-                    $optionProperty3->property_id = $property->id;
-                    $optionProperty3->save();
-                }
-
-
             }
-            alert()->success('ویژگی با موفقیت ثبت شد', 'ذخیره ویژگی')->confirmButton('بستن')->autoclose('3000');
+            $property->cate_id = $request->cate_id;
+            $property->show_place = $request->show_place;
+            $property->type = $request->type;
+            $property->key = $request->key;
+            $property->save();
 
-            return back();
+            $optionProperty = explode(',', $request->optionProperty);
+            $optionProperties = new Collection();
+            foreach ($optionProperty as $key => $value) {
+                if ($value != "" && $value !== ',' && $value !== ' ' && $value !== ', ' && $value !== ' , ' && $value !== ' ,' && $value != null) {
+                    $optionProperties->push($value);
+                }
+            }
+
+
+            foreach ($optionProperties as $option) {
+                $optionProperty3 = new OptionProperty();
+                $optionProperty3->value = $option;
+                $optionProperty3->property_id = $property->id;
+                $optionProperty3->save();
+            }
+
 
         }
+        alert()->success('ویژگی با موفقیت ثبت شد', 'ذخیره ویژگی')->confirmButton('بستن')->autoclose('3000');
+
+        return back();
+
 
     }
 
@@ -176,47 +132,23 @@ class PropertyController extends Controller
 //            'list_head_property' => 'required',
 //            'image' => 'required|image|mimes:jpeg,bmp,png,jpg',
 //        ]);
-        if ($request->type == 1) {
-//            return $request->name_price;
-            foreach ($request->name_price as $item) {
 
-                $propertyExsit = Property::where('cate_id', $request->cate_id)
-                    ->where('key', $item)->first();
-                if ($propertyExsit){
-
-                }else{
-                    if ($item == 'color') {
-                        $name = 'رنگ';
-                    } elseif ($item = 'size') {
-                        $name = 'سایز';
-                    }
-                    $property = new Property();
-                    $property->name = $name;
-                    $property->type = $request->type;
-                    $property->cate_id = $request->cate_id;
-                    $property->show_place = $request->show_place;
-                    $property->key = $item;
-                    $property->save();
-                }
-
-            }
-            alert()->success('ویژگی با موفقیت ثبت شد', 'ذخیره ویژگی')->confirmButton('بستن')->autoclose('3000');
-
-            return redirect()->route('addProperty', $property->category->id);
+        $property = Property::findOrFail($id);
+        $property->name = $request->name;
+        if ($request->head_property_id == 0) {
+            $property->head_property_id = null;
         } else {
-            $property = Property::findOrFail($id);
-            $property->name = $request->name;
             $property->head_property_id = $request->head_property_id;
-            $property->cate_id = $request->cate_id;
-            $property->show_place = $request->show_place;
-            $property->type = $request->type;
-            $property->key = $request->key;
-            $property->update();
-
-            alert()->success('ویژگی با موفقیت ذخیره شد', 'ذخیره ویژگی')->confirmButton('بستن')->autoclose('3000');
-
-            return redirect()->route('addProperty', $property->category->id);
         }
+        $property->cate_id = $request->cate_id;
+        $property->show_place = $request->show_place;
+        $property->type = $request->type;
+        $property->key = $request->key;
+        $property->update();
+
+        alert()->success('ویژگی با موفقیت ذخیره شد', 'ذخیره ویژگی')->confirmButton('بستن')->autoclose('3000');
+
+        return redirect()->route('addProperty', $property->category->id);
 
 
     }

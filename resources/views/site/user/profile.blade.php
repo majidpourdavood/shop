@@ -12,36 +12,8 @@
 
             <div class="row mt-2">
                 <div class=" col-sm-12 col-md-4 col-lg-3">
-                    <div class="box_top_saidbar_profile row clothing">
-                        <h6>به صفحه پروفایل کاربری خوش آمدید</h6>
-                    </div>
+                    @include('site.layout.saidbarUser')
 
-                    <div class="saidbar_profile clothing">
-
-                        <ul class="list-group list-group-flush nav flex-column">
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">ویرایش پروفایل</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">لیست سفارشات</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item active" href="#">افزایش اعتبار</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">گزارش مالی</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">کالاهای مورد علاقه</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">کدهای تخفیف</a>
-                            </li>
-                        </ul>
-
-
-
-                    </div>
                 </div>
                 <div class="col-sm-12 col-md-8 col-lg-9">
 
@@ -52,7 +24,7 @@
                                 <a href="#" title="">فروشگاه اینترنتی کرکره مارکت</a>
                             </li>
 
-                            <li class="breadcrumb-item active" aria-current="page">پروفایل کاربری </li>
+                            <li class="breadcrumb-item active" aria-current="page">پروفایل کاربری</li>
                         </ol>
                     </nav>
                     <!-- end breadcrumb -->
@@ -69,25 +41,30 @@
                                         </div>
                                     </div>
                                     <div class="form-group row no-gutters">
-                                        <label for="inputPhone3" class="col-sm-3 col-lg-4 col-form-label"> نام خانوادگی</label>
+                                        <label for="inputPhone3" class="col-sm-3 col-lg-4 col-form-label"> نام
+                                            خانوادگی</label>
                                         <div class="col-sm-9 col-lg-8">
                                             <input type="text" class="form-control" id="inputPhone3" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group row no-gutters">
-                                        <label for="inputPhone4" class="col-sm-3 col-lg-4 col-form-label"> شماره تلفن همراه</label>
+                                        <label for="inputPhone4" class="col-sm-3 col-lg-4 col-form-label"> شماره تلفن
+                                            همراه</label>
                                         <div class="col-sm-9 col-lg-8">
                                             <input type="text" class="form-control" id="inputPhone4" placeholder="">
                                         </div>
                                     </div>
                                     <div class="form-group row no-gutters">
-                                        <label for="inputPhone75" class="col-sm-3 col-lg-4 col-form-label"> شماره تلفن ثابت</label>
+                                        <label for="inputPhone75" class="col-sm-3 col-lg-4 col-form-label"> شماره تلفن
+                                            ثابت</label>
                                         <div class="col-sm-9 col-lg-8">
                                             <div class="col-xs-9 col-sm-9 col-lg-8 w_70_576">
-                                                <input type="text" class="form-control" id="inputPhone75" placeholder="">
+                                                <input type="text" class="form-control" id="inputPhone75"
+                                                       placeholder="">
                                             </div>
                                             <div class="col-xs-3 col-sm-3 col-lg-4 order-12 phone_sabet w_30_576">
-                                                <input type="text" class="form-control" id="inputPhone75" placeholder="021">
+                                                <input type="text" class="form-control" id="inputPhone75"
+                                                       placeholder="021">
                                             </div>
                                         </div>
 
@@ -99,12 +76,14 @@
 
                                         <div class="col-sm-9 col-lg-8">
                                             <div class="custom-control custom-radio custom-control-inline clothing">
-                                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
+                                                <input type="radio" id="customRadioInline1" name="customRadioInline1"
+                                                       class="custom-control-input" checked>
                                                 <label class="custom-control-label" for="customRadioInline1">
                                                     مرد</label>
                                             </div>
                                             <div class="custom-control custom-radio custom-control-inline clothing">
-                                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                                <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                                                       class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadioInline2">
                                                     زن</label>
                                             </div>
@@ -113,16 +92,17 @@
                                     </div>
 
 
-
                                     <div class="form-group row no-gutters">
-                                        <label for="inputAddress3" class="col-sm-3 col-lg-4 col-form-label"> کدپستی</label>
+                                        <label for="inputAddress3" class="col-sm-3 col-lg-4 col-form-label">
+                                            کدپستی</label>
                                         <div class="col-sm-9 col-lg-8">
                                             <input type="text" class="form-control" id="inputAddress3" placeholder="">
                                         </div>
                                     </div>
 
                                     <div class="form-group row no-gutters">
-                                        <label for="inputState" class="col-sm-3 col-lg-4 col-form-label"> استان/شهر/محله </label>
+                                        <label for="inputState" class="col-sm-3 col-lg-4 col-form-label">
+                                            استان/شهر/محله </label>
                                         <div class="col-sm-9 col-lg-8 select_style_Editprofile">
                                             <div class="col-xs-12 col-sm-4 select_address">
                                                 <select id="inputState" class="form-control ">
@@ -146,9 +126,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group row no-gutters">
-                                        <label for="exampleFormControlTextarea1" class="col-sm-3 col-lg-4 col-form-label"> آدرس</label>
+                                        <label for="exampleFormControlTextarea1"
+                                               class="col-sm-3 col-lg-4 col-form-label"> آدرس</label>
                                         <div class="col-sm-9 col-lg-8">
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                      rows="3"></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -168,4 +150,4 @@
 @section('script')
 
 
-    @endsection
+@endsection

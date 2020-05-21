@@ -42,6 +42,7 @@ Route::group(['prefix' => ''], function () {
 
     Route::get('/cart', 'CartController@cart')->name('cart');
     Route::get('/cart/addcart/{slug}', 'CartController@addCart')->name('addCart');
+    Route::get('/cart/addCartSinglePage/{slug}', 'CartController@addCartSinglePage')->name('addCartSinglePage');
 //    Route::post('/cart/updateCart/{slug_product}', 'CartController@updateCart')->name('updateCart');
 
     Route::post('/discount', 'CartController@discount')->name('discount');
@@ -149,8 +150,13 @@ Route::group(['namespace' => 'Panel', 'middleware' => ['auth:web', 'role:seller'
 
 });
 
+Route::get('ajax/{id} ', 'View\ViewController@locationAjax')->name('locationAjax');
 
 Route::group(['namespace' => 'User', 'middleware' => ['auth:web'], 'prefix' => 'panel'], function () {
+
+
+    Route::post('/payment', 'PaymentController@payment')->name('payment');
+    Route::get('/payment/checker', 'PaymentController@checker')->name('payment.checker');
 
     Route::get('/panelUser', 'UserController@panelUser')->name('panelUser');
 
@@ -160,7 +166,15 @@ Route::group(['namespace' => 'User', 'middleware' => ['auth:web'], 'prefix' => '
     Route::get('discountCode', 'UserController@discountCode')->name('discountCode');
     Route::get('financialReport', 'UserController@financialReport')->name('financialReport');
     Route::get('orderList', 'UserController@orderList')->name('orderList');
-    Route::get('/address', 'UserController@address')->name('address');
+    Route::get('address', 'UserController@address')->name('address');
+
+    Route::get('set-address', 'PanelController@setAddress')->name('setAddress');
+    Route::post('storeAddress', 'PanelController@storeAddress')->name('storeAddress');
+
+    Route::get('/add-address-to-cart', 'PanelController@addAddressToCart')->name('addAddressToCart');
+//    Route::get('/add-delivery-to-cart', 'PanelController@addDeliveryToCart')->name('addDeliveryToCart');
+    Route::get('/shipping', 'PanelController@shipping')->name('shipping');
+
 
 //    Route::get('/dashboard', 'DashboardController@index')->name('panel.dashboard');
 //    Route::get('/notifications', 'DashboardController@notifications')->name('panel.notifications');

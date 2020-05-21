@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Model\Address;
+use App\Model\ItemOrder;
+use App\Model\Order;
 use App\Model\Ticket;
 use App\Model\TicketMessage;
 use App\Permissions\HasPermissionsTrait;
@@ -38,10 +41,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function profile()
-    {
-        return $this->hasOne(Profile::class, 'user_id');
-    }
 
     public function charts()
     {
@@ -52,23 +51,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Wallet::class);
     }
-    public function tickets()
+    public function orders()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(Order::class);
     }
 
-    public function ticketMessages()
+    public function item_orders()
     {
-        return $this->hasMany(TicketMessage::class);
-    }
-    public function shops()
-    {
-        return $this->hasMany(Shop::class, 'user_id');
+        return $this->hasMany(ItemOrder::class, 'user_id');
     }
 
-    public function ibans()
+    public function addresses()
     {
-        return $this->hasMany(Iban::class, 'user_id');
+        return $this->hasMany(Address::class, 'user_id');
     }
+
 
 }

@@ -78,8 +78,8 @@ class BannerController extends Controller
             $name = sha1(time() . $filename->getClientOriginalName());
             $extension = $filename->getClientOriginalExtension();
             $filename = "{$name}.{$extension}";
-//            $request->image->move(base_path('../public_html/images/banner/'), $filename);
-            $request->image->move(public_path('/images/banner/'), $filename);
+            $request->image->move(base_path('../public_html/images/banner/'), $filename);
+//            $request->image->move(public_path('/images/banner/'), $filename);
             $banner->image = '/images/banner/' .$filename;
         }
 
@@ -134,8 +134,8 @@ class BannerController extends Controller
             $name = sha1(time() . $filename->getClientOriginalName());
             $extension = $filename->getClientOriginalExtension();
             $filename = "{$name}.{$extension}";
-//            $request->image->move(base_path('../public_html/images/banner/'), $filename);
-            $request->image->move(public_path('/images/banner/'), $filename);
+            $request->image->move(base_path('../public_html/images/banner/'), $filename);
+//            $request->image->move(public_path('/images/banner/'), $filename);
             $banner->image = '/images/banner/' .$filename;
         }
 

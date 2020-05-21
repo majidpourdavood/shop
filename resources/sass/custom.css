@@ -1,4 +1,4 @@
-.style-top-brand{
+.style-top-brand {
     justify-content: center;
     margin-bottom: 1.4rem;
 }
@@ -46,25 +46,22 @@
     left: 0;
     top: 0;
     opacity: 0;
-}.upload-btn-wrapper .btn {
-     height: 6.7rem;
-     width: 7.7rem;
- }.upload-btn-wrapper input[type=file] {
-      display: none;
-  }
+}
+
+.upload-btn-wrapper .btn {
+    height: 6.7rem;
+    width: 7.7rem;
+}
+
+.upload-btn-wrapper input[type=file] {
+    display: none;
+}
 
 .upload-btn-wrapper img {
     height: 6.7rem;
     width: 7.7rem;
     border: 2px dashed #4846b1;
-    /* color: #4846b1; */
-    /* background-color: white; */
-    /* padding: 1rem 1rem; */
     border-radius: 8px;
-    /* font-size: 1rem; */
-    /* font-weight: bold; */
-    /* height: 6rem; */
-    /* width: 7.1rem; */
     margin: .3rem;
 }
 
@@ -72,7 +69,6 @@
     position: absolute;
     right: .8rem;
     top: 1rem;
-    /* transform: translate(0,-50%); */
     color: #ff3c1b;
     font-size: 1.12rem;
     cursor: pointer;
@@ -82,3 +78,66 @@
     height: 31rem;
     width: 100%;
 }
+
+.delete_cart i {
+    color: #fff;
+}
+
+
+.dropdown-auth {
+    width: 9rem;
+    float: left;
+    text-align: right;
+}
+
+.dropdown-auth > a {
+    color: #fff;
+}
+
+.dropdown-auth:hover .nav-link {
+    color: #d4d0d0;
+}
+
+.dropdown-auth:hover .dropdown-item {
+    color: #960aca;
+    border-bottom: 1px solid #fff;
+    text-align: right;
+    padding: .5rem;
+}
+
+.dropdown-auth .dropdown-menu {
+    background-color: #e8e8e8;
+}
+
+.dropdown-auth .dropdown-menu {
+    left: 0;
+}
+
+.custom-control-label::before {
+    right: -1.5rem;
+    left: unset;
+}
+
+.custom-control-label::after {
+    right: -1.5rem;
+    left: unset;
+}
+
+.nav-pills > li {
+    border: 1px solid #999;
+    margin: .4rem;
+    border-radius: .4rem;
+}
+
+.tab-content>.tab-pane {
+    text-align: right;
+    padding: .5rem 1rem;
+}
+.custom-control {
+    margin: .5rem 0;
+}
+
+.form-post-payment .card {
+    margin: .7rem 0;
+}
+

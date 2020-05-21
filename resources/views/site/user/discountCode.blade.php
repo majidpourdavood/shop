@@ -14,36 +14,8 @@
 
             <div class="row mt-2">
                 <div class=" col-sm-12 col-md-4 col-lg-3">
-                    <div class="box_top_saidbar_profile row clothing">
-                        <h6>به صفحه پروفایل کاربری خوش آمدید</h6>
-                    </div>
+                    @include('site.layout.saidbarUser')
 
-                    <div class="saidbar_profile clothing">
-
-                        <ul class="list-group list-group-flush nav flex-column">
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">ویرایش پروفایل</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">لیست سفارشات</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item active" href="#">افزایش اعتبار</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">گزارش مالی</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">کالاهای مورد علاقه</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link list-group-item" href="#">کدهای تخفیف</a>
-                            </li>
-                        </ul>
-
-
-
-                    </div>
                 </div>
                 <div class="col-sm-12 col-md-8 col-lg-9">
 
@@ -51,7 +23,7 @@
                     <nav class="breadcrumb_profile clothing" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="#" title="">فروشگاه اینترنتی کرکره مارکت</a>
+                                <a href="#" title="">{{config('app.name')}}</a>
                             </li>
 
                             <li class="breadcrumb-item active" aria-current="page">پروفایل کاربری </li>
