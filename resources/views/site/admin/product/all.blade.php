@@ -102,6 +102,12 @@
                                         <i class="fas fa-plus"></i></a>
                                 </li>
 
+
+                                <li class="list-inline-item">
+                                    <a href="{{ route('itemProductAdd' , $product->id) }}"
+                                       class="btn btn-dark">
+                                        <i class="fas fa-plus"></i></a>
+                                </li>
                             </ul>
                         </td>
 

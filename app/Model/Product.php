@@ -41,7 +41,7 @@ class Product extends Model
             } else if ($type_page = 'visit') {
 //                $query->where('viewCount', 'desc');
 //                $query->orderBy(DB::raw('COUNT(products.viewCount)', 'desc'));
-                $query->orderBy('viewCount' , 'desc');
+                $query->orderBy('viewCount', 'desc');
             }
         }
 
@@ -61,6 +61,11 @@ class Product extends Model
     public function discounts()
     {
         return $this->hasMany(Discount::class);
+    }
+
+    public function itemProducts()
+    {
+        return $this->hasMany(ItemProduct::class);
     }
 
     public function propertyProducts()

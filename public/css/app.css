@@ -10999,6 +10999,9 @@ input.qtyminus {
 
 .dropdown-auth:hover .dropdown-item {
     color: #960aca;
+    border-bottom: 1px solid #fff;
+    text-align: right;
+    padding: .5rem;
 }
 
 .dropdown-auth .dropdown-menu {
@@ -11025,15 +11028,30 @@ input.qtyminus {
     border-radius: .4rem;
 }
 
-.tab-content>.tab-pane {
+.tab-content > .tab-pane {
     text-align: right;
     padding: .5rem 1rem;
 }
+
 .custom-control {
     margin: .5rem 0;
 }
 
 .form-post-payment .card {
     margin: .7rem 0;
+}
+
+
+.product_slider_clothing .list-group-item {
+    padding: .75rem .35rem;
+}
+
+.product_slider_clothing .list-inline .list-inline-item:nth-child(2) {
+    float: left;
+}
+
+.product_slider_clothing .list-inline .list-inline-item:nth-child(2) .btn {
+    padding: .375rem .5rem;
+    font-size: .8rem;
 }
 

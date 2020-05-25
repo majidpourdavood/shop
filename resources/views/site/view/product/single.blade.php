@@ -13,7 +13,8 @@
             <nav class="breadcrumb_product_style clothing " aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="#" title="">فروشگاه اینترنتی {{config('app.name')}}</a>
+                        <a href="/" title="فروشگاه اینترنتی {{config('app.name')}}">فروشگاه
+                            اینترنتی {{config('app.name')}}</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="#" title="">
@@ -29,8 +30,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-5 zoom_style">
                     <div class="image_zoome">
                         <img id="zoom_05" src="{{$product->images[0]}}" alt="" class=""
-                             data-zoom-image="{{$product->images[0]}}"
-                        />
+                             data-zoom-image="{{$product->images[0]}}"/>
                     </div>
                     <div class="image_zoome_thumbnail row no-gutters" id="gallery_01">
                         @foreach($product->images as $image)
@@ -52,9 +52,10 @@
                         <div class="col-sm-12 col-md-8 col-lg-8">
                             <div class="content_view_product_clothing card">
                                 <h3>{{$product->title}} </h3>
-                                <p>تولیدکننده :
+                                <p>
+                                    تولیدکننده :
                                     <a href="#" title="" class="change_color_clothing">
-                                        {{$product->user->name}} {{$product->user->lastName}}
+                                        {{$itemProduct->user->name}} {{$itemProduct->user->lastName}}
                                     </a>
                                     دسته بندی:
                                     <a href="#" title="" class="change_color_clothing">
@@ -63,7 +64,7 @@
                                 </p>
                                 <div class="row no-gutters">
                                     <button class="btn btn_Price_view_product_clothing translate" role="button"> قیمت
-                                        {{kamaNumber($product->price)}} تومان
+                                        {{kamaNumber($itemProduct->price)}} تومان
                                     </button>
                                     {{--<span class="star_view_product_clothing">--}}
                                     {{--<i class="far fa-star"></i>--}}
@@ -73,49 +74,37 @@
                                     {{--<i class="fas fa-star"></i>--}}
                                     {{--</span>--}}
                                 </div>
-                                <ul class="list-group list-group-flush ul_property_view_product_clothing">
+                                <ul class="list-group list-group-flush ul_property_view_product_clothing"
+                                    style="height: auto;">
                                     <li class="list-group-item active">ویژگی های کلیدی</li>
 
-                                    @if(count($product->propertyProducts()->where('type', 1)->get()) > 0)
-                                        @if(count($propertyProductsColor) > 0)
-                                            <li class="list-group-item">
+                                    @if(count($items) > 0)
+                                        <form class="select-change-price" action="{{route('setPriceItemProduct')}}"
+                                              method="get">
+                                            <input type="hidden" name="itemProduct" value="{{$itemProduct->id}}">
+                                            @foreach($items as $item)
+                                                <div class="form-group row align-items-center">
+                                                    <label class="col-2" for="property-{{$item['property_id']}}">
+                                                        {{$item['name']}} : </label>
+                                                    <select name="property-{{$item['property_id']}}"
+                                                            id="property-{{$item['property_id']}}"
+                                                            class="form-control d-inline col-3">
+                                                        @foreach($item['optionProperty'] as $option)
+                                                            <option value="{{$option['option_property_id']}}">
+                                                                {{$option['value']}}
+                                                            </option>
+                                                        @endforeach
 
-
-                                                <label for="color"> رنگ بندی : </label>
-                                                <select name="color" id="color" class="form-control d-inline"
-                                                        style="width: 8rem;">
-
-                                                    @foreach($product->propertyProducts()->where('property_id', 6)->get() as $color)
-                                                        <option value="{{$color->id}}">
-                                                            {{$color->keyValue->name}}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-
-                                            </li>
-                                        @endif
-                                        @if(count($propertyProductsSize) > 0)
-
-                                            <li class="list-group-item">
-
-                                                <label for="size"> سایز بندی : </label>
-                                                <select name="size" id="size" class="form-control d-inline"
-                                                        style="width: 8rem;">
-
-                                                    @foreach($product->propertyProducts()->where('property_id', 18)->get() as $size)
-                                                        <option value="{{$size->id}}">
-                                                            {{$size->keyValue->name}}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </li>
-                                        @endif
+                                                    </select>
+                                                </div>
+                                            @endforeach
+                                            {{--<button class="btn btn-info" type="submit">اعمال</button>--}}
+                                        </form>
                                     @else
                                         @if(count($propertyTop) > 0)
                                             <li class="list-group-item">
                                                 @foreach($propertyTop as $top)
-
-                                                    @if($top->type == 0)
+                                                    @if($top->property->type == 0)
                                                         {{$top->property->name   }}
                                                         :
                                                         {{$top->optionProperty->value   }}
@@ -125,8 +114,7 @@
                                             </li>
                                             <li class="list-group-item">
                                                 @foreach($propertyTop as $top)
-
-                                                    @if($top->type == 2)
+                                                    @if($top->property->type == 2)
                                                         {{$top->property->name   }}
                                                         :
                                                         @foreach($top->value as $topValue)
@@ -178,7 +166,7 @@
 
             <section class="section_parent_clothing_slider">
                 <div class="row">
-                    <h3 class="title_slider_product">  محصولات مرتبط -
+                    <h3 class="title_slider_product"> محصولات مرتبط -
                         <a class="link_title_product_clothing" href="{{route('search',['type'=>'new'])}}">نمایش همه</a>
                     </h3>
                 </div>
@@ -251,34 +239,37 @@
                         <h3>مشخصات فنی {{$product->title}}  </h3>
 
                         @foreach($product->propertyProducts as $propertyProduct)
-                           @if($propertyProduct->type != 1)
-                            <div class="row group_btn_tab_pane">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <button type="button" class="btn btn-block btn_tab_Pane_view_Product">
-                                      {{$propertyProduct->property->name}}
-                                    </button>
-                                </div>
-                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                            @if($propertyProduct->type != 1)
+                                <div class="row group_btn_tab_pane">
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                        <button type="button" class="btn btn-block btn_tab_Pane_view_Product">
+                                            {{$propertyProduct->property->name}}
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 
-                                    @if($propertyProduct->type == 2)
+                                        @if($propertyProduct->type == 2)
 
-                                        @foreach($propertyProduct->value as $topValue)
+                                            @foreach($propertyProduct->value as $topValue)
 
-                                            <button type="button" class="btn btn-block btn_tab_Pane_view_Product_Explanation">
-                                                {{$topValue   }}
-                                            </button>
-                                        @endforeach
-                                    @endif
+                                                <button type="button"
+                                                        class="btn btn-block btn_tab_Pane_view_Product_Explanation">
+                                                    {{$topValue   }}
+                                                </button>
+                                            @endforeach
+                                        @endif
 
                                         @if($propertyProduct->type == 0)
 
-
-                                            <button type="button" class="btn btn-block btn_tab_Pane_view_Product_Explanation">
-                                                {{$propertyProduct->optionProperty->value   }}
-                                            </button>
+                                            @if(isset($propertyProduct->optionProperty->value))
+                                                <button type="button"
+                                                        class="btn btn-block btn_tab_Pane_view_Product_Explanation">
+                                                    {{$propertyProduct->optionProperty->value   }}
+                                                </button>
+                                            @endif
                                         @endif
+                                    </div>
                                 </div>
-                            </div>
                             @endif
 
                         @endforeach
@@ -503,6 +494,47 @@
     <script src="{{asset('js/jquery.elevatezoom.js')}}"></script>
 
     <script>
+
+        $('.select-change-price select').change(function () {
+            var option = $(this).val();
+            var select = $(this).attr('name');
+            console.log(option);
+
+            console.log(select);
+
+                $.ajax({
+                    method: $(this).parent().parent().attr('method'),
+                    url: $(this).parent().parent().attr('action'),
+                    data: $(this).parent().parent().serialize(),
+                    async: true,
+                    dataType: 'json',
+                })
+                    .done(function (data) {
+
+                        console.log(data);
+
+                    })
+                    .fail(function (data) {
+
+                        console.log(data);
+
+
+                    });
+
+
+
+            // $.ajax({
+            //     type: "POST",
+            //     url: window.location + "",
+            //     data: {'id': id}
+            //
+            // }).done(function (msg) {
+            //     if (msg === 'done') {
+            //         evt.preventDefault();
+            //         alert('NOP');
+            //     }
+            // });
+        });
 
         $(function () {
             $('img.lazy').loadScroll(50000000);

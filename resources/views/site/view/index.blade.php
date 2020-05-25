@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     {{--    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/') }}">--}}
-    <title>{{config('app.name')}}  | بزرگترین فروشگاه اینترنتی </title>
+    <title>{{config('app.name')}} | بزرگترین فروشگاه اینترنتی </title>
     <meta name="description" content="{{config('app.name')}} | بزرگترین فروشگاه اینترنتی">
     <meta name="keywords" content="">
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -89,7 +89,9 @@
                         <div class="card product_slider_clothing">
                             <div class="img_slider_clothing">
                                 <a href="{{route('product' , $productNew->slug)}}" title="{{$productNew->title}}">
-                                    <img class="lazy card-img-top" src="{{$productNew->images[0]}}" alt=""/>
+                                    @if($productNew->images)
+                                        <img class="lazy card-img-top" src="{{$productNew->images[0]}}" alt=""/>
+                                    @endif
                                 </a>
                             </div>
 
@@ -97,22 +99,62 @@
                                 <a href="{{route('product' , $productNew->slug)}}" title="{{$productNew->title}}">
                                     <h5> {{$productNew->title}}</h5>
                                 </a>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+
+
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                کمترین قیمت :
+                                                {{kamaNumber($productNew->itemProducts()->orderBy('price', 'desc')->first()->price)}}
+                                                تومان
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="btn btn-success"
+                                                   href="{{route('product' ,  ['slug' => $productNew->slug ,'item_code'=> $productNew->itemProducts()->orderBy('price', 'desc')->first()->code])}}"
+                                                   title="{{$productNew->title}}">
+                                                    نمایش
+                                                </a>
+                                            </li>
+                                        </ul>
+
+
+                                    </li>
+                                    <li class="list-group-item">
+
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                بیشترین قیمت :
+                                                {{kamaNumber($productNew->itemProducts()->orderBy('price', 'asc')->first()->price)}}
+                                                تومان
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="btn btn-info"
+                                                   href="{{route('product' ,  ['slug' => $productNew->slug ,'item_code'=> $productNew->itemProducts()->orderBy('price', 'desc')->first()->code])}}"
+                                                   title="{{$productNew->title}}">
+                                                    نمایش
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+
+
                             </div>
-                            <div class="card-footer">
+                            {{--<div class="card-footer">--}}
 
-                                <button type="button" class="btn btn_price_clothing"> {{kamaNumber($productNew->price)}}
-                                    تومان
 
-                                </button>
-                                <a href="{{route('addCart' , $productNew->slug)}}" title="{{$productNew->title}}">
+                            {{--<a href="{{route('addCart' , $productNew->slug)}}" title="{{$productNew->title}}">--}}
 
-                                    <button type="button" class="btn btn_buy_clothing">
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                            {{--<button type="button" class="btn btn_buy_clothing">--}}
+                            {{--<i class="fa fa-plus" aria-hidden="true"></i>--}}
 
-                                         سبد خرید
-                                    </button>
-                                </a>
-                            </div>
+                            {{--سبد خرید--}}
+                            {{--</button>--}}
+                            {{--</a>--}}
+                            {{--</div>--}}
                         </div>
 
                     </div>
@@ -129,45 +171,94 @@
         <section class="section_parent_clothing_slider">
             <div class="row">
                 <h3 class="title_slider_product"> محصولات پربازدید -
-                    <a class="link_title_product_clothing" href="{{route('search',['type_page'=>'visit'])}}">نمایش همه</a>
+                    <a class="link_title_product_clothing" href="{{route('search',['type_page'=>'visit'])}}">نمایش
+                        همه</a>
                 </h3>
             </div>
+
             <section class="slider_clothing_product owl-carousel owl-theme">
                 @foreach($productViewCounts as $productViewCount)
                     <div class="col item">
                         <div class="card product_slider_clothing">
                             <div class="img_slider_clothing">
-                                <a href="{{route('product' , $productViewCount->slug)}}" title="{{$productViewCount->title}}">
-                                    <img class="lazy card-img-top" src="{{$productViewCount->images[0]}}" alt=""/>
+                                <a href="{{route('product' ,  ['slug' => $productViewCount->slug ])}}"
+                                   title="{{$productViewCount->title}}">
+                                    @if($productViewCount->images)
+                                        <img class="lazy card-img-top" src="{{$productViewCount->images[0]}}" alt=""/>
+                                    @endif
                                 </a>
                             </div>
 
                             <div class="card-body">
-                                <a href="{{route('product' , $productViewCount->slug)}}" title="{{$productViewCount->title}}">
+                                <a href="{{route('product' , $productViewCount->slug)}}"
+                                   title="{{$productViewCount->title}}">
                                     <h5> {{$productViewCount->title}}</h5>
                                 </a>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+
+
+                                        <ul class="list-inline">
+
+                                            <li class="list-inline-item">
+                                                کمترین قیمت :
+                                                {{kamaNumber($productViewCount->itemProducts()->orderBy('price', 'desc')->first()->price)}}
+                                                تومان
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                <a class="btn btn-success"
+                                                   href="{{route('product' ,  ['slug' => $productViewCount->slug ,'item_code'=> $productViewCount->itemProducts()->orderBy('price', 'desc')->first()->code])}}"
+                                                       title="{{$productViewCount->title}}">
+                                                        نمایش
+                                                    </a>
+                                            </li>
+                                        </ul>
+
+
+                                    </li>
+                                    <li class="list-group-item">
+
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                بیشترین قیمت :
+                                                {{kamaNumber($productViewCount->itemProducts()->orderBy('price', 'asc')->first()->price)}}
+                                                تومان
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="btn btn-info"
+                                                   href="{{route('product' ,  ['slug' => $productViewCount->slug ,'item_code'=> $productViewCount->itemProducts()->orderBy('price', 'desc')->first()->code])}}"
+                                                   title="{{$productViewCount->title}}">
+                                                    نمایش
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+
+
                             </div>
-                            <div class="card-footer">
+                            {{--<div class="card-footer">--}}
 
-                                <button type="button" class="btn btn_price_clothing"> {{kamaNumber($productViewCount->price)}}
-                                    تومان
 
-                                </button>
-                                <a href="{{route('addCart' , $productViewCount->slug)}}" title="{{$productViewCount->title}}">
+                            {{--<a href="{{route('addCart' , $productViewCount->slug)}}" title="{{$productViewCount->title}}">--}}
 
-                                    <button type="button" class="btn btn_buy_clothing">
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                            {{--<button type="button" class="btn btn_buy_clothing">--}}
+                            {{--<i class="fa fa-plus" aria-hidden="true"></i>--}}
 
-                                        سبد خرید
-                                    </button>
-                                </a>
-                            </div>
+                            {{--سبد خرید--}}
+                            {{--</button>--}}
+                            {{--</a>--}}
+                            {{--</div>--}}
                         </div>
 
                     </div>
 
                 @endforeach
             </section>
+
 
         </section>
 
@@ -207,7 +298,6 @@
 
 </div>
 <!-- end content -->
-
 
 
 @include('site.layout.footer')

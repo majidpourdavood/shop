@@ -22,6 +22,7 @@ Route::group(['namespace' => 'View'], function () {
     Route::get('/', 'ViewController@index')->name('index');
 
     Route::get('/product/{slug}', 'ViewController@product')->name('product');
+    Route::get('/setPriceItemProduct', 'ViewController@setPriceItemProduct')->name('setPriceItemProduct');
     Route::get('/search', 'ViewController@search')->name('search');
     Route::get('/category/{title}', 'ViewController@category')->name('category');
 
@@ -82,8 +83,12 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth:web', 'role:admin']
     Route::get('/{product}/addPropertyProduct', 'ProductController@addPropertyProduct')->name('addPropertyProduct');
     Route::post('/{product}/storePropertyProduct', 'ProductController@storePropertyProduct')->name('storePropertyProduct');
 
-    Route::post('/property-product-post', 'ProductController@propertyProductPost')->name('propertyProductPost');
-    Route::delete('/property-product-delete/{id}', 'ProductController@propertyProductDelete')->name('propertyProductDelete');
+
+    Route::get('/{item}/item-product', 'ItemProductController@itemProductAdd')->name('itemProductAdd');
+    Route::post('/item-product-post', 'ItemProductController@itemProductStore')->name('itemProductStore');
+    Route::get('/{item}/item-product-edit', 'ItemProductController@itemProductEdit')->name('itemProductEdit');
+    Route::patch('/{item}/item-product-update', 'ItemProductController@itemProductUpdate')->name('itemProductUpdate');
+    Route::delete('/{item}/item-product-delete', 'ItemProductController@itemProductDelete')->name('itemProductDelete');
 
 
     Route::post('/head-property-post', 'CategoryController@headPropertyPost')->name('headPropertyPost');
@@ -151,6 +156,7 @@ Route::group(['namespace' => 'Panel', 'middleware' => ['auth:web', 'role:seller'
 });
 
 Route::get('ajax/{id} ', 'View\ViewController@locationAjax')->name('locationAjax');
+Route::get('get-property/{id} ', 'View\ViewController@getProperty')->name('getProperty');
 
 Route::group(['namespace' => 'User', 'middleware' => ['auth:web'], 'prefix' => 'panel'], function () {
 
